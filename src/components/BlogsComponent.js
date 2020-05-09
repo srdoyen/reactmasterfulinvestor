@@ -32,7 +32,7 @@ function VideoPlay() {
   );
 }
 
-class HomeComponent extends React.Component {
+class BlogsComponent extends React.Component {
   render() {
     return (
       <>
@@ -247,4 +247,4 @@ class HomeComponent extends React.Component {
   }
 }
 
-export default HomeComponent;
+export default BlogsComponent;

@@ -1,12 +1,19 @@
 import React from "react";
 import "./App.css";
 import "./newStyle.css";
-import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import HomeComponent from "./components/HomeComponent";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Main from "./components/MainComponent";
+import { BrowserRouter } from "react-router-dom";
 
 class App extends React.Component {
   render() {
-    return <HomeComponent />;
+    return (
+      <BrowserRouter>
+        <div className="App">
+          <Main />
+        </div>
+      </BrowserRouter>
+    );
   }
 }
 

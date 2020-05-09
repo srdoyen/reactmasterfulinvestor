@@ -2,6 +2,7 @@ import React from "react";
 import "../App.css";
 import "../newStyle.css";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import { NavLink } from "react-router-dom";
 
 class HeaderComponent extends React.Component {
   render() {
@@ -19,19 +20,19 @@ class HeaderComponent extends React.Component {
           <div className="collapse navbar-collapse" id="nucampNavbar">
             <ul className="navbar-nav">
               <li className="nav-item active">
-                <a className="nav-link" href="#">
+                <NavLink className="nav-link" to="/home">
                   <i className="fa fa-home fa-lg"></i> Home
-                </a>
+                </NavLink>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="aboutus.html">
+                <NavLink className="nav-link" to="/about">
                   <i className="fa fa-info fa-lg"></i> About
-                </a>
+                </NavLink>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="blogs.html">
+                <NavLink className="nav-link" to="/blogs">
                   <i className="fa fa-book fa-lg"></i> Blogs
-                </a>
+                </NavLink>
               </li>
               <li className="nav-item dropdown">
                 <a
@@ -62,9 +63,9 @@ class HeaderComponent extends React.Component {
                 </div>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="contactus.html">
+                <NavLink className="nav-link" to="/contact">
                   <i className="fa fa-address-card fa-lg"></i> Contact
-                </a>
+                </NavLink>
               </li>
             </ul>
           </div>

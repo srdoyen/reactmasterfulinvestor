@@ -2,6 +2,7 @@ import React from "react";
 import "../App.css";
 import "../newStyle.css";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import { Link } from "react-router-dom";
 
 function FooterComponent() {
   return (
@@ -12,16 +13,16 @@ function FooterComponent() {
             <h5>Links</h5>
             <ul className="list-unstyled">
               <li>
-                <a href="#">Home</a>
+                <Link to="/home">Home</Link>
               </li>
               <li>
-                <a href="aboutus.html">About</a>
+                <Link to="/about">About Us</Link>
               </li>
               <li>
-                <a href="#">Sites</a>
+                <Link to="/calculators">Calculators</Link>
               </li>
               <li>
-                <a href="contactus.html">Contact</a>
+                <Link to="/contact">Contact Us</Link>
               </li>
             </ul>
           </div>
