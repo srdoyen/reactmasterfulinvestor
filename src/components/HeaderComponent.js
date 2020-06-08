@@ -19,7 +19,7 @@ class HeaderComponent extends React.Component {
           </button>
           <div className="collapse navbar-collapse" id="nucampNavbar">
             <ul className="navbar-nav">
-              <li className="nav-item active">
+              <li className="nav-item">
                 <NavLink className="nav-link" to="/home">
                   <i className="fa fa-home fa-lg"></i> Home
                 </NavLink>
@@ -37,7 +37,7 @@ class HeaderComponent extends React.Component {
               <li className="nav-item dropdown">
                 <a
                   className="nav-link dropdown-toggle"
-                  href="#"
+                  href="/#"
                   id="navbarDropdown"
                   role="button"
                   data-toggle="dropdown"

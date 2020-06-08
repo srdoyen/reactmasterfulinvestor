@@ -7,30 +7,49 @@ import About from "./AboutComponent";
 import Contact from "./ContactComponent";
 import Calculators from "./CalculatorsComponent";
 import Blogs from "./BlogsComponent.js";
+import SingleBlogComponent from "./SingleBlogComponent.js";
 import FooterComponent from "./FooterComponent";
 import HeaderComponent from "./HeaderComponent";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Redirect } from "react-router-dom";
+import { Switch, Route, Redirect, withRouter } from "react-router-dom";
+import { BlogPosts } from "../data/blogs.js";
 
 class MainComponent extends React.Component {
+  state = {
+    BlogPosts: BlogPosts,
+  };
+
   render() {
+    const BlogWithId = ({ match }) => {
+      return (
+        <SingleBlogComponent
+          blogPost={
+            this.state.BlogPosts.filter(
+              (blog) => blog.id === +match.params.blogId
+            )[0]
+          }
+        />
+      );
+    };
     return (
       <>
         <HeaderComponent />
-        <Router>
-          <Switch>
-            <Route path="/home" component={HomeComponent} />
-            <Route path="/about" component={About} />
-            <Route path="/contact" component={Contact} />
-            <Route path="/calculators" component={Calculators} />
-            <Route path="/blogs" component={Blogs} />
-            <Redirect to="/home" />
-          </Switch>
-        </Router>
+        <Switch>
+          <Route path="/home" component={HomeComponent} />
+          <Route exact path="/about" component={About} />
+          <Route exact path="/contact" component={Contact} />
+          <Route exact path="/calculators" component={Calculators} />
+          <Route
+            exact
+            path="/blogs"
+            render={() => <Blogs BlogPosts={this.state.BlogPosts} />}
+          />
+          <Route path="/blogs/:blogId" component={BlogWithId} />
+          <Redirect to="/home" />
+        </Switch>
         <FooterComponent />
       </>
     );
   }
 }
 
-export default MainComponent;
+export default withRouter(MainComponent);

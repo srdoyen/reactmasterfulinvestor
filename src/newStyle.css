@@ -2,7 +2,6 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 
-
 h2,
 h3 {
   font-family: "Lobster";
@@ -10,8 +9,6 @@ h3 {
   padding-top: 12px;
   padding-left: 20px;
 }
-
-
 
 h2 {
   color: #3046c5;
@@ -27,7 +24,7 @@ a.btn-link {
 }
 
 h5 {
-  color: #3FF2F2;
+  color: #3ff2f2;
 }
 
 #btn-social-icon {
@@ -72,7 +69,7 @@ header h2 {
 }
 
 @media (min-width: 768px) {
-  .navbar-nav>li {
+  .navbar-nav > li {
     /* (80px - line-height of 27px) / 2 = 26.5px */
     padding-top: 26.5px;
     padding-bottom: 26.5px;
@@ -87,8 +84,6 @@ h5.mb-1 {
   color: black;
 }
 
-
-
 h5 {
   color: white;
   font-weight: bold;
@@ -101,7 +96,6 @@ p.card-text {
 .list-group {
   margin-top: 40px;
   margin-bottom: 40px;
-
 }
 
 header {
@@ -165,7 +159,8 @@ header .overlay {
 
 @media (pointer: coarse) and (hover: none) {
   header {
-    background: url('https://source.unsplash.com/XT5OInaElMw/1600x900') black no-repeat center center scroll;
+    background: url("https://source.unsplash.com/XT5OInaElMw/1600x900") black
+      no-repeat center center scroll;
   }
 
   header video {
@@ -181,7 +176,7 @@ h4 {
   color: black;
   font-size: 30px;
   font-weight: bold;
-  font-family: 'Arial';
+  font-family: "Arial";
 }
 
 p.lead {
@@ -198,9 +193,26 @@ p.lead {
 
 .img-spacing {
   margin-bottom: 20px;
-
 }
 
 .site-footer {
   background-color: black;
+}
+
+@media (min-width: 767px) {
+  .blog {
+    margin-top: 10px;
+    margin-left: 100px;
+    margin-right: 100px;
+  }
+}
+
+.blogText {
+  text-align: left;
+  white-space: pre-wrap;
+}
+
+.img-fluid {
+  height: 50%;
+  width: 50%;
 }
