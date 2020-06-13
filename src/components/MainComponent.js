@@ -34,7 +34,11 @@ class MainComponent extends React.Component {
       <>
         <HeaderComponent />
         <Switch>
-          <Route path="/home" component={HomeComponent} />
+          <Route
+            exact
+            path="/home"
+            render={() => <HomeComponent BlogPosts={this.state.BlogPosts} />}
+          />
           <Route exact path="/about" component={About} />
           <Route exact path="/contact" component={Contact} />
           <Route exact path="/calculators" component={Calculators} />

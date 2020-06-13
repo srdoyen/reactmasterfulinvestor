@@ -131,26 +131,26 @@ function SingleBlogComponent(props) {
                     <div class="col-lg-6">
                       <ul class="list-unstyled mb-0">
                         <li>
-                          <a href="#">Web Design</a>
+                          <Link>Web Design</Link>
                         </li>
                         <li>
-                          <a href="#">HTML</a>
+                          <Link>HTML</Link>
                         </li>
                         <li>
-                          <a href="#">Freebies</a>
+                          <Link>Freebies</Link>
                         </li>
                       </ul>
                     </div>
                     <div class="col-lg-6">
                       <ul class="list-unstyled mb-0">
                         <li>
-                          <a href="#">JavaScript</a>
+                          <Link>JavaScript</Link>
                         </li>
                         <li>
-                          <a href="#">CSS</a>
+                          <Link>CSS</Link>
                         </li>
                         <li>
-                          <a href="#">Tutorials</a>
+                          <Link>Tutorials</Link>
                         </li>
                       </ul>
                     </div>

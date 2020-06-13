@@ -29,7 +29,7 @@ function RenderBlogItem({ blogPost }) {
 }
 
 function Blogs(props) {
-  const blogPost = props.BlogPosts.map((blogPost) => {
+  const blogPosts = props.BlogPosts.map((blogPost) => {
     return (
       <div className="row" key={blogPost.id}>
         <div className="col-2"></div>
@@ -40,7 +40,7 @@ function Blogs(props) {
       </div>
     );
   });
-  return <>{blogPost}</>;
+  return <>{blogPosts}</>;
 }
 
 export default Blogs;

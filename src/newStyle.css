@@ -84,6 +84,10 @@ h5.mb-1 {
   color: black;
 }
 
+.card-header {
+  color: black;
+}
+
 h5 {
   color: white;
   font-weight: bold;
