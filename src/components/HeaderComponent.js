@@ -1,76 +1,56 @@
 import React from "react";
-import "../App.css";
-import "../newStyle.css";
-import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import { NavLink } from "react-router-dom";
+import { Nav, Navbar, NavDropdown } from "react-bootstrap";
+import {
+  FaHome,
+  FaInfo,
+  FaBook,
+  FaAddressCard,
+  FaCalculator,
+  FaBeer,
+} from "react-icons/fa";
 
 class HeaderComponent extends React.Component {
   render() {
     return (
-      <nav className="navbar navbar-expand-sm navbar-dark sticky-top navbar-lg">
-        <div className="container">
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#nucampNavbar"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="nucampNavbar">
-            <ul className="navbar-nav">
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/home">
-                  <i className="fa fa-home fa-lg"></i> Home
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/about">
-                  <i className="fa fa-info fa-lg"></i> About
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/blogs">
-                  <i className="fa fa-book fa-lg"></i> Blogs
-                </NavLink>
-              </li>
-              <li className="nav-item dropdown">
-                <a
-                  className="nav-link dropdown-toggle"
-                  href="/#"
-                  id="navbarDropdown"
-                  role="button"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  <i className="fa fa-calculator fa-lg"></i>
-                  Calculators
-                </a>
-                <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a
-                    className="dropdown-item"
-                    href="./calculators/index-fund-calculator.html"
-                  >
-                    Index Fund Calculator
-                  </a>
-                  <a
-                    className="dropdown-item"
-                    href="./calculators/rental-property-calculator.html"
-                  >
-                    Rental Property Calculator
-                  </a>
-                </div>
-              </li>
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/contact">
-                  <i className="fa fa-address-card fa-lg"></i> Contact
-                </NavLink>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+      <Navbar expand="lg" bg="black" variant="dark">
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="m-auto">
+            <Nav.Link href="/home">
+              <FaHome /> Home
+            </Nav.Link>
+            <Nav.Link href="/about">
+              <FaInfo /> About Us
+            </Nav.Link>
+            <Nav.Link href="/contact">
+              <FaAddressCard /> Contact Us
+            </Nav.Link>
+            <Nav.Link href="/blogs">
+              <FaBook /> Blogs
+            </Nav.Link>
+            <NavDropdown
+              title={
+                <span>
+                  <FaCalculator /> Calculators
+                </span>
+              }
+            >
+              <NavDropdown.Item href="/debt_calculator">
+                Debt Calculator
+              </NavDropdown.Item>
+              <NavDropdown.Item href="/rental_property_calculator">
+                Rental Property Calculator
+              </NavDropdown.Item>
+              <NavDropdown.Item href="/stock_calculator">
+                Stock Calculator
+              </NavDropdown.Item>
+            </NavDropdown>
+            <Nav.Link href="/blogeditor">
+              <FaBeer /> Blog Editor
+            </Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
     );
   }
 }

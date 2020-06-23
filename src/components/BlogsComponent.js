@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 function RenderBlogItem({ blogPost }) {
   return (
-    <Link to={`/blogs/${blogPost.id}`}>
+    <Link to={`blogs/${blogPost.id}`}>
       <div className="row">
         <div className="col">
           <div className="list-group">

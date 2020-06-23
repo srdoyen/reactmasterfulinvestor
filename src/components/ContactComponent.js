@@ -16,7 +16,7 @@ class ContactComponent extends React.Component {
           </div>
 
           <div className="row row-content align-items-center">
-            <div className="col-sm-4">
+            <div className="col">
               <h4>Address</h4>
               <address>
                 123 Main St
@@ -26,23 +26,7 @@ class ContactComponent extends React.Component {
                 U.S.A.
               </address>
             </div>
-            <div className="col">
-              <a role="button" className="btn btn-link" href="tel:+12065551234">
-                <i className="fa fa-phone"></i>
-                1-206-555-1234
-              </a>
-              <br />
-              <a
-                role="button"
-                className="btn btn-link"
-                href="mailto:campsites@nucamp.co"
-              >
-                <i className="fa fa-envelope-o"></i>
-                campsites@nucamp.co
-              </a>
-            </div>
           </div>
-
           <div className="row row-content">
             <div className="col-12">
               <h2>Send me your Feedback</h2>

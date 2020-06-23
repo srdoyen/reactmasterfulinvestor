@@ -9,6 +9,7 @@ import Calculators from "./CalculatorsComponent";
 import Blogs from "./BlogsComponent.js";
 import SingleBlogComponent from "./SingleBlogComponent.js";
 import FooterComponent from "./FooterComponent";
+import BlogEditor from "./BlogEditorComponent";
 import HeaderComponent from "./HeaderComponent";
 import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import { BlogPosts } from "../data/blogs.js";
@@ -47,7 +48,8 @@ class MainComponent extends React.Component {
             path="/blogs"
             render={() => <Blogs BlogPosts={this.state.BlogPosts} />}
           />
-          <Route path="/blogs/:blogId" component={BlogWithId} />
+          <Route exact path="/blogeditor" component={BlogEditor} />
+          <Route exact path="/blogs/:blogId" component={BlogWithId} />
           <Redirect to="/home" />
         </Switch>
         <FooterComponent />

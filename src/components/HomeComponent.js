@@ -2,6 +2,8 @@ import React from "react";
 import "../App.css";
 import "../newStyle.css";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import { Link } from "react-router-dom";
+import { Card } from "react-bootstrap";
 
 function VideoPlay() {
   return (
@@ -34,35 +36,37 @@ function VideoPlay() {
 
 function BlogCard({ blogPost }) {
   return (
-    <div className="card">
-      <img
-        src={require("../img/chrome-river.jpg")}
-        className="card-img-top"
-        alt="..."
-      />
-      <div className="card-body">
-        <h5 className="card-title">{blogPost.title}</h5>
-        <p className="card-text">{blogPost.description.substring(0, 300)}...</p>
-        <p className="card-text">
-          <small className="text-muted">Last updated {blogPost.date}</small>
-        </p>
-      </div>
-    </div>
+    <Card className="col-md-4">
+      <Link to={`/blogs/${blogPost.id}`}>
+        <img
+          src={require("../img/chrome-river.jpg")}
+          className="card-img-top"
+          alt="..."
+        />
+        <div className="card-body">
+          <h5 className="card-title">{blogPost.title}</h5>
+          <p className="card-text">
+            {blogPost.description.substring(0, 300)}...
+          </p>
+          <p className="card-text">
+            <small className="text-muted">Last updated {blogPost.date}</small>
+          </p>
+        </div>
+      </Link>
+    </Card>
   );
 }
 
 function HomeComponent(props) {
-  const CardDeck = props.BlogPosts.slice(-3).map((blogPost) => {
-    return (
-      <div className="container">
-        <div className="row row-content">
-          <div className="card-deck">
-            <BlogCard blogPost={blogPost} />
-          </div>
-        </div>
+  const Deck = (
+    <div className="container">
+      <div className="row row-content">
+        {props.BlogPosts.slice(-3).map((blogPost) => (
+          <BlogCard blogPost={blogPost} />
+        ))}
       </div>
-    );
-  });
+    </div>
+  );
   return (
     <>
       <VideoPlay />
@@ -86,10 +90,10 @@ function HomeComponent(props) {
               <p>
                 This website is strictly for <code>long term investing</code>{" "}
                 and building wealth and achieving financial freedom the
-                <code>boring</code> way. We will touch on all sorts of investing
-                topics like stocks, index funds, real estate, and much, much
-                more! Also, we will look at ways to overcome debt, minimize
-                expenses, and increase income.
+                <code> boring</code> way. We will touch on all sorts of
+                investing topics like stocks, index funds, real estate, and
+                much, much more! Also, we will look at ways to overcome debt,
+                minimize expenses, and increase income.
               </p>
               <p>
                 Take a look at the <code>Calculators</code> page for financial
@@ -157,7 +161,7 @@ function HomeComponent(props) {
           </div>
         </div>
       </section>
-      {CardDeck}
+      {Deck}
       <div className="container">
         <div className="row row-content align-items-center">
           <div className="col-sm mx-auto">

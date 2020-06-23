@@ -88,6 +88,8 @@ h5.mb-1 {
   color: black;
 }
 
+
+
 h5 {
   color: white;
   font-weight: bold;
@@ -214,6 +216,7 @@ p.lead {
 .blogText {
   text-align: left;
   white-space: pre-wrap;
+  margin: 10px;
 }
 
 .img-fluid {
