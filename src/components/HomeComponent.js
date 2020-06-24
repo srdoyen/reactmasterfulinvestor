@@ -36,7 +36,7 @@ function VideoPlay() {
 
 function BlogCard({ blogPost }) {
   return (
-    <Card className="col-md-4">
+    <Card className="col-lg-4">
       <Link to={`/blogs/${blogPost.id}`}>
         <img
           src={require("../img/chrome-river.jpg")}

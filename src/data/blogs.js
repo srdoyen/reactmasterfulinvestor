@@ -1,4 +1,4 @@
-export const BlogPosts = [
+export var BlogPosts = [
   {
     id: 0,
     title: "9-5 Grind",
