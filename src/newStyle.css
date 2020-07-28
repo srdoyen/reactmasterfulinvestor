@@ -215,8 +215,9 @@ p.lead {
 
 .blogText {
   text-align: left;
-  white-space: pre-wrap;
+  white-space: pre-wrap; 
   margin: 10px;
+  word-wrap:break-word;
 }
 
 .img-fluid {

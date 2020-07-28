@@ -2,23 +2,30 @@ import React, { Component } from "react";
 import CKEditor from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import { Button, Form, Col } from "react-bootstrap";
-import { BlogPosts } from "../data/blogs.js";
 
 class BlogEditor extends Component {
   constructor(props) {
     super(props);
-    this.state = { title: "", author: "", imgUrl: "", blogEntry: "" };
+    this.state = { author: "", title: "", image: "", description: "" };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(event) {
     //const form = event.currentTarget;
-    console.log(this.state.title);
-    console.log(this.state.name);
-    console.log(this.state.imgUrl);
-    console.log(this.state.blogEntry);
-
-    event.preventDefault();
+    fetch("https://localhost:3443/blogs", {
+      method: "POST", // or 'PUT'
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(this.state),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success: ", data);
+      })
+      .catch((error) => {
+        console.error("Error: ", error);
+      });
   }
 
   render() {
@@ -40,7 +47,7 @@ class BlogEditor extends Component {
             <Form.Control
               type="name"
               placeholder="Enter name"
-              onChange={(e) => this.setState({ name: e.target.value })}
+              onChange={(e) => this.setState({ author: e.target.value })}
             />
           </Form.Group>
 
@@ -49,7 +56,7 @@ class BlogEditor extends Component {
             <Form.File
               onChange={(e) => {
                 this.setState({
-                  imgUrl: e.target.value.replace("C:\\fakepath\\", ""),
+                  image: e.target.value.replace("C:\\fakepath\\", ""),
                 });
               }}
             />
@@ -65,7 +72,7 @@ class BlogEditor extends Component {
               }}
               onChange={(event, editor) => {
                 const data = editor.getData();
-                this.setState({ blogEntry: data });
+                this.setState({ description: data });
               }}
             />
             <br />

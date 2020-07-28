@@ -12,20 +12,26 @@ import FooterComponent from "./FooterComponent";
 import BlogEditor from "./BlogEditorComponent";
 import HeaderComponent from "./HeaderComponent";
 import { Switch, Route, Redirect, withRouter } from "react-router-dom";
-import { BlogPosts } from "../data/blogs.js";
+//import { BlogPosts } from "../data/blogs.js";
 
 class MainComponent extends React.Component {
   state = {
-    BlogPosts: BlogPosts,
+    BlogPosts: [],
   };
 
+  componentWillMount() {
+    fetch("https://localhost:3443/blogs")
+      .then((response) => response.json())
+      .then((blogPosts) => this.setState({ BlogPosts: blogPosts }));
+  }
+
   render() {
-    const BlogWithId = ({ match }) => {
+    const BlogWithTitle = ({ match }) => {
       return (
         <SingleBlogComponent
           blogPost={
             this.state.BlogPosts.filter(
-              (blog) => blog.id === +match.params.blogId
+              (blog) => blog.title === match.params.title
             )[0]
           }
         />
@@ -49,7 +55,7 @@ class MainComponent extends React.Component {
             render={() => <Blogs BlogPosts={this.state.BlogPosts} />}
           />
           <Route exact path="/blogeditor" component={BlogEditor} />
-          <Route exact path="/blogs/:blogId" component={BlogWithId} />
+          <Route exact path="/blogs/:blogTitle" component={BlogWithTitle} />
           <Redirect to="/home" />
         </Switch>
         <FooterComponent />

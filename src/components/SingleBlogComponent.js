@@ -4,6 +4,8 @@ import "../newStyle.css";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
 
+var parse = require("html-react-parser");
+
 class SingleBlogComponent extends React.Component {
   componentDidMount() {
     window.scrollTo(0, 0);
@@ -15,48 +17,48 @@ class SingleBlogComponent extends React.Component {
     if (blog) {
       return (
         <>
-          <div class="blog">
-            <div class="row">
-              <div class="col-1"></div>
-              <div class="col-lg-8">
-                <h1 class="postTitle">{blog.title}</h1>
-                <p class="lead">
+          <div className="blog">
+            <div className="row">
+              <div className="col-1"></div>
+              <div className="col-lg-8">
+                <h1 className="postTitle">{blog.title}</h1>
+                <p className="lead">
                   by
                   <Link to={`/contact`}> {blog.author}</Link>
                 </p>
-                <p>Posted on {blog.date}</p>
+                <p>Last updated: {blog.updatedAt.substring(0, 10)}</p>
                 <img
-                  class="img-fluid rounded"
-                  src={require("../img/Canva - Photo of High-Rise Buildings.jpg")}
+                  className="img-fluid rounded"
+                  src={require(`../img/${blog.image}`)}
                   alt=""
                 />
                 <hr />
-                <p class="lead blogText">{blog.description}</p>
+                <div className="lead blogText">{parse(blog.description)}</div>
 
                 <hr />
 
-                <div class="card my-4">
-                  <h5 class="card-header">Leave a Comment:</h5>
-                  <div class="card-body">
+                <div className="card my-4">
+                  <h5 className="card-header">Leave a Comment:</h5>
+                  <div className="card-body">
                     <form>
-                      <div class="form-group">
-                        <textarea class="form-control" rows="3"></textarea>
+                      <div className="form-group">
+                        <textarea className="form-control" rows="3"></textarea>
                       </div>
-                      <button type="submit" class="btn btn-primary">
+                      <button type="submit" className="btn btn-primary">
                         Submit
                       </button>
                     </form>
                   </div>
                 </div>
 
-                <div class="media mb-4">
+                <div className="media mb-4">
                   <img
-                    class="d-flex mr-3 rounded-circle"
+                    className="d-flex mr-3 rounded-circle"
                     src="http://placehold.it/50x50"
                     alt=""
                   />
-                  <div class="media-body">
-                    <h5 class="mt-0">Commenter Name</h5>
+                  <div className="media-body">
+                    <h5 className="mt-0">Commenter Name</h5>
                     Cras sit amet nibh libero, in gravida nulla. Nulla vel metus
                     scelerisque ante sollicitudin. Cras purus odio, vestibulum
                     in vulputate at, tempus viverra turpis. Fusce condimentum
@@ -65,27 +67,27 @@ class SingleBlogComponent extends React.Component {
                   </div>
                 </div>
 
-                <div class="media mb-4">
+                <div className="media mb-4">
                   <img
-                    class="d-flex mr-3 rounded-circle"
+                    className="d-flex mr-3 rounded-circle"
                     src="http://placehold.it/50x50"
                     alt=""
                   />
-                  <div class="media-body">
-                    <h5 class="mt-0">Commenter Name</h5>
+                  <div className="media-body">
+                    <h5 className="mt-0">Commenter Name</h5>
                     Cras sit amet nibh libero, in gravida nulla. Nulla vel metus
                     scelerisque ante sollicitudin. Cras purus odio, vestibulum
                     in vulputate at, tempus viverra turpis. Fusce condimentum
                     nunc ac nisi vulputate fringilla. Donec lacinia congue felis
                     in faucibus.
-                    <div class="media mt-4">
+                    <div className="media mt-4">
                       <img
-                        class="d-flex mr-3 rounded-circle"
+                        className="d-flex mr-3 rounded-circle"
                         src="http://placehold.it/50x50"
                         alt=""
                       />
-                      <div class="media-body">
-                        <h5 class="mt-0">Commenter Name</h5>
+                      <div className="media-body">
+                        <h5 className="mt-0">Commenter Name</h5>
                         Cras sit amet nibh libero, in gravida nulla. Nulla vel
                         metus scelerisque ante sollicitudin. Cras purus odio,
                         vestibulum in vulputate at, tempus viverra turpis. Fusce
@@ -93,14 +95,14 @@ class SingleBlogComponent extends React.Component {
                         lacinia congue felis in faucibus.
                       </div>
                     </div>
-                    <div class="media mt-4">
+                    <div className="media mt-4">
                       <img
-                        class="d-flex mr-3 rounded-circle"
+                        className="d-flex mr-3 rounded-circle"
                         src="http://placehold.it/50x50"
                         alt=""
                       />
-                      <div class="media-body">
-                        <h5 class="mt-0">Commenter Name</h5>
+                      <div className="media-body">
+                        <h5 className="mt-0">Commenter Name</h5>
                         Cras sit amet nibh libero, in gravida nulla. Nulla vel
                         metus scelerisque ante sollicitudin. Cras purus odio,
                         vestibulum in vulputate at, tempus viverra turpis. Fusce
@@ -111,18 +113,18 @@ class SingleBlogComponent extends React.Component {
                   </div>
                 </div>
               </div>
-              <div class="col-md-2">
-                <div class="card my-4">
-                  <h5 class="card-header">Search</h5>
-                  <div class="card-body">
-                    <div class="input-group">
+              <div className="col-md-2">
+                <div className="card my-4">
+                  <h5 className="card-header">Search</h5>
+                  <div className="card-body">
+                    <div className="input-group">
                       <input
                         type="text"
-                        class="form-control"
+                        className="form-control"
                         placeholder="Search for..."
                       />
-                      <span class="input-group-btn">
-                        <button class="btn btn-secondary" type="button">
+                      <span className="input-group-btn">
+                        <button className="btn btn-secondary" type="button">
                           Go!
                         </button>
                       </span>
@@ -130,12 +132,12 @@ class SingleBlogComponent extends React.Component {
                   </div>
                 </div>
 
-                <div class="card my-4">
-                  <h5 class="card-header">Categories</h5>
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col-lg-6">
-                        <ul class="list-unstyled mb-0">
+                <div className="card my-4">
+                  <h5 className="card-header">Categories</h5>
+                  <div className="card-body">
+                    <div className="row">
+                      <div className="col-lg-6">
+                        <ul className="list-unstyled mb-0">
                           <li>
                             <Link>Web Design</Link>
                           </li>
@@ -147,8 +149,8 @@ class SingleBlogComponent extends React.Component {
                           </li>
                         </ul>
                       </div>
-                      <div class="col-lg-6">
-                        <ul class="list-unstyled mb-0">
+                      <div className="col-lg-6">
+                        <ul className="list-unstyled mb-0">
                           <li>
                             <Link>JavaScript</Link>
                           </li>
@@ -164,16 +166,16 @@ class SingleBlogComponent extends React.Component {
                   </div>
                 </div>
 
-                <div class="card my-4">
-                  <h5 class="card-header">Side Widget</h5>
-                  <div class="card-body">
+                <div className="card my-4">
+                  <h5 className="card-header">Side Widget</h5>
+                  <div className="card-body">
                     You can put anything you want inside of these side widgets.
                     They are easy to use, and feature the new Bootstrap 4 card
                     containers!
                   </div>
                 </div>
               </div>
-              <div class="col-1"></div>
+              <div className="col-1"></div>
             </div>
           </div>
         </>

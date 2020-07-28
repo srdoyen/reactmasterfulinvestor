@@ -5,6 +5,7 @@ import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
 import { Card } from "react-bootstrap";
 
+var parse = require("html-react-parser");
 function VideoPlay() {
   return (
     <header>
@@ -37,7 +38,7 @@ function VideoPlay() {
 function BlogCard({ blogPost }) {
   return (
     <Card className="col-lg-4">
-      <Link to={`/blogs/${blogPost.id}`}>
+      <Link to={`/blogs/${blogPost.title}`}>
         <img
           src={require("../img/chrome-river.jpg")}
           className="card-img-top"
@@ -46,10 +47,12 @@ function BlogCard({ blogPost }) {
         <div className="card-body">
           <h5 className="card-title">{blogPost.title}</h5>
           <p className="card-text">
-            {blogPost.description.substring(0, 300)}...
+            {parse(blogPost.description.substring(0, 300))}
           </p>
           <p className="card-text">
-            <small className="text-muted">Last updated {blogPost.date}</small>
+            <small className="text-muted">
+              Last updated: {blogPost.updatedAt.substring(0, 10)}
+            </small>
           </p>
         </div>
       </Link>
