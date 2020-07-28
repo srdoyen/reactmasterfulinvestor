@@ -31,7 +31,7 @@ class MainComponent extends React.Component {
         <SingleBlogComponent
           blogPost={
             this.state.BlogPosts.filter(
-              (blog) => blog.title === match.params.title
+              (blog) => blog.title === match.params.blogTitle
             )[0]
           }
         />
