@@ -3,12 +3,44 @@ import "../App.css";
 import "../newStyle.css";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
+import { Button, Form, Col } from "react-bootstrap";
 
 var parse = require("html-react-parser");
 
 class SingleBlogComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { name: "", email: "", comment: "" };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
   componentDidMount() {
     window.scrollTo(0, 0);
+  }
+
+  handleSubmit(event) {
+    alert("A name was submitted: " + this.state.name);
+    fetch("https://localhost:3443/blogs/comments", {
+      method: "POST", // or 'PUT'
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        blogId: this.props._id,
+        name: this.state.name,
+        email: this.state.email,
+        comment: this.state.comment,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success: ", data);
+      })
+      .catch((error) => {
+        console.error("Error: ", error);
+      });
+    event.preventDefault();
   }
 
   render() {
@@ -20,7 +52,7 @@ class SingleBlogComponent extends React.Component {
           <div className="blog">
             <div className="row">
               <div className="col-1"></div>
-              <div className="col-lg-8">
+              <div className="col-lg-10">
                 <h1 className="postTitle">{blog.title}</h1>
                 <p className="lead">
                   by
@@ -40,14 +72,41 @@ class SingleBlogComponent extends React.Component {
                 <div className="card my-4">
                   <h5 className="card-header">Leave a Comment:</h5>
                   <div className="card-body">
-                    <form>
-                      <div className="form-group">
-                        <textarea className="form-control" rows="3"></textarea>
-                      </div>
-                      <button type="submit" className="btn btn-primary">
-                        Submit
-                      </button>
-                    </form>
+                    <Form onSubmit={this.handleSubmit}>
+                      <Form.Group as={Col} controlId="title">
+                        <Form.Label>Name</Form.Label>
+                        <Form.Control
+                          type="us"
+                          placeholder="Enter name"
+                          onChange={(e) =>
+                            this.setState({ name: e.target.value })
+                          }
+                        />
+                      </Form.Group>
+                      <Form.Group as={Col} controlId="name">
+                        <Form.Label>Email</Form.Label>
+                        <Form.Control
+                          type="email"
+                          placeholder="Enter email"
+                          onChange={(e) =>
+                            this.setState({ email: e.target.value })
+                          }
+                        />
+                      </Form.Group>
+                      <Form.Group as={Col} controlId="name">
+                        <Form.Label>Comment</Form.Label>
+                        <Form.Control
+                          type="comment"
+                          placeholder="Enter comment"
+                          onChange={(e) =>
+                            this.setState({ comment: e.target.value })
+                          }
+                        />
+                      </Form.Group>
+                      <Form.Group>
+                        <Button type="submit">Submit form</Button>
+                      </Form.Group>
+                    </Form>
                   </div>
                 </div>
 
@@ -110,68 +169,6 @@ class SingleBlogComponent extends React.Component {
                         lacinia congue felis in faucibus.
                       </div>
                     </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-md-2">
-                <div className="card my-4">
-                  <h5 className="card-header">Search</h5>
-                  <div className="card-body">
-                    <div className="input-group">
-                      <input
-                        type="text"
-                        className="form-control"
-                        placeholder="Search for..."
-                      />
-                      <span className="input-group-btn">
-                        <button className="btn btn-secondary" type="button">
-                          Go!
-                        </button>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="card my-4">
-                  <h5 className="card-header">Categories</h5>
-                  <div className="card-body">
-                    <div className="row">
-                      <div className="col-lg-6">
-                        <ul className="list-unstyled mb-0">
-                          <li>
-                            <Link>Web Design</Link>
-                          </li>
-                          <li>
-                            <Link>HTML</Link>
-                          </li>
-                          <li>
-                            <Link>Freebies</Link>
-                          </li>
-                        </ul>
-                      </div>
-                      <div className="col-lg-6">
-                        <ul className="list-unstyled mb-0">
-                          <li>
-                            <Link>JavaScript</Link>
-                          </li>
-                          <li>
-                            <Link>CSS</Link>
-                          </li>
-                          <li>
-                            <Link>Tutorials</Link>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="card my-4">
-                  <h5 className="card-header">Side Widget</h5>
-                  <div className="card-body">
-                    You can put anything you want inside of these side widgets.
-                    They are easy to use, and feature the new Bootstrap 4 card
-                    containers!
                   </div>
                 </div>
               </div>
