@@ -6,18 +6,31 @@ import { Button, Form, Col } from "react-bootstrap";
 class BlogEditor extends Component {
   constructor(props) {
     super(props);
-    this.state = { author: "", title: "", image: "", description: "" };
+    this.state = {
+      author: "",
+      title: "",
+      image: "",
+      description: "",
+      token: props.token,
+    };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(event) {
+    console.log(this.state.token);
     //const form = event.currentTarget;
     fetch("https://localhost:3443/blogs", {
       method: "POST", // or 'PUT'
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${this.state.token}`,
       },
-      body: JSON.stringify(this.state),
+      body: JSON.stringify({
+        author: this.state.author,
+        title: this.state.title,
+        image: this.state.image,
+        description: this.state.description,
+      }),
     })
       .then((response) => response.json())
       .then((data) => {

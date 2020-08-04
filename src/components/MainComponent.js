@@ -9,8 +9,8 @@ import Calculators from "./CalculatorsComponent";
 import Blogs from "./BlogsComponent.js";
 import SingleBlogComponent from "./SingleBlogComponent.js";
 import FooterComponent from "./FooterComponent";
-import BlogEditor from "./BlogEditorComponent";
 import HeaderComponent from "./HeaderComponent";
+import Login from "./LoginComponent";
 import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 //import { BlogPosts } from "../data/blogs.js";
 
@@ -19,7 +19,7 @@ class MainComponent extends React.Component {
     BlogPosts: [],
   };
 
-  componentWillMount() {
+  componentDidMount() {
     fetch("https://localhost:3443/blogs")
       .then((response) => response.json())
       .then((blogPosts) => this.setState({ BlogPosts: blogPosts }));
@@ -54,7 +54,7 @@ class MainComponent extends React.Component {
             path="/blogs"
             render={() => <Blogs BlogPosts={this.state.BlogPosts} />}
           />
-          <Route exact path="/blogeditor" component={BlogEditor} />
+          <Route exact path="/login" component={Login} />
           <Route exact path="/blogs/:blogTitle" component={BlogWithTitle} />
           <Redirect to="/home" />
         </Switch>

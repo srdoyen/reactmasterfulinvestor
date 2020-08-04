@@ -6,7 +6,7 @@ import {
   FaBook,
   FaAddressCard,
   FaCalculator,
-  FaBeer,
+  FaPencilAlt,
 } from "react-icons/fa";
 
 class HeaderComponent extends React.Component {
@@ -45,8 +45,8 @@ class HeaderComponent extends React.Component {
                 Stock Calculator
               </NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link href="/blogeditor">
-              <FaBeer /> Blog Editor
+            <Nav.Link href="/login">
+              <FaPencilAlt /> Login
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>

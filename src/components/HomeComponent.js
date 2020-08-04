@@ -40,7 +40,7 @@ function BlogCard({ blogPost }) {
     <Card className="col-lg-4">
       <Link to={`/blogs/${blogPost.title}`}>
         <img
-          src={require("../img/chrome-river.jpg")}
+          src={require(`../img/${blogPost.image}`)}
           className="card-img-top"
           alt="..."
         />
